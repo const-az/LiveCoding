@@ -4,7 +4,7 @@
     <!-- Creates cards for every course -->
     <v-col cols="12" sm="6" md="4" v-for="item in courses" :key="item.id">
       <!-- Card -->
-      <v-card outlined class="rounded-xl">
+      <v-card outlined>
         <!-- Course image -->
         <v-img class="white--text align-end" height="250px" :src="item.data.img"></v-img>
         <!-- Course description -->
@@ -17,7 +17,7 @@
         <v-card-actions>
           <v-spacer></v-spacer>
           <!-- Add to cart -->
-          <v-btn depressed small class="ma-2" @click="goToDetails(item.id)">Ir al curso</v-btn>
+          <v-btn depressed small color="amber darken-2 ma-2" @click="goToDetails(item.id)">Ir al curso</v-btn>
         </v-card-actions>
       </v-card>
     </v-col>
