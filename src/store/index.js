@@ -4,13 +4,28 @@ import axios from 'axios'
 
 Vue.use(Vuex)
 
+// Empty doll function to reset currentDoll
+function defaultCourse(){
+  return {
+    id: null,
+    data:{
+      name: '',
+      description: '',
+      img: '',
+      examples: {}
+    }
+  }
+}
+
 // Base URL for Firebase cloudfunctions
 const baseURL = 'https://us-central1-ensayoprueba01-eb6f1.cloudfunctions.net/courses'
 
 export default new Vuex.Store({
   state: {
     courses: [],
-    loading: false
+    loading: false,
+    // Saves temporarily new doll data or when editing one
+    currentCourse: defaultCourse(),
   },
   mutations: {
     // Toggles loading state
@@ -19,6 +34,16 @@ export default new Vuex.Store({
     // Sets courses into an state array
     GET_COURSES(state, courses){
       state.courses = courses
+    },
+    // Sets current course info into state
+    SET_CURRENT_COURSE(state, course){ state.currentCourse = course },
+    // Resets current course info into an empty object
+    RESET_CURRENT_COURSE(state){
+      state.currentCourse.id = null
+      const empty = defaultCourse();
+      Object.keys(empty.data).forEach(key => {
+        state.currentCourse.data[key] = empty.data[key]
+      });
     },
   },
   actions: {
@@ -35,7 +60,15 @@ export default new Vuex.Store({
         commit('HIDE_LOADING')
       })
     },
+    goToCourse({commit, getters}, id){
+      commit('SHOW_LOADING')
+      let targetCourse = getters.searchCourseById(id)
+      commit('SET_CURRENT_COURSE', targetCourse)
+    }
   },
-  modules: {
+  getters: {
+    searchCourseById: (state) => (id) => {
+      return state.courses.find(course => course.id === id)
+    },
   }
 })
