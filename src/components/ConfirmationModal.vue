@@ -9,8 +9,8 @@
       <!-- Modal buttons: to confirm or close modal -->
       <v-card-actions>
         <v-spacer></v-spacer>
-        <v-btn color="pink lighten-3" outlined small rounded @click="closeMessage">{{ !edit ? 'No' : 'Cerrar'}}</v-btn>
-        <v-btn color="pink lighten-3" rounded small depressed dark @click="deleteCourse" v-if="!edit">Sí</v-btn>
+        <v-btn color="amber darken-2" outlined small @click="closeMessage">{{ !edit ? 'No' : 'Cerrar'}}</v-btn>
+        <v-btn color="amber darken-2" small depressed dark @click="deleteCourse" v-if="!edit">Sí</v-btn>
       </v-card-actions>
     </v-card>
   </v-dialog>
