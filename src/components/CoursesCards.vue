@@ -10,14 +10,14 @@
         <!-- Course description -->
         <v-card-text class="pb-0">
           <!-- Course name -->
-          <p class="pa-0 text-h5 font-weight-bold">{{item.data.name}}</p>
+          <p class="pa-0 text-h5 text--primary font-weight-bold">{{item.data.name}}</p>
           <p class="text--primary text-caption">{{item.data.description}}</p>
         </v-card-text>
         <!-- Action buttons -->
         <v-card-actions>
           <v-spacer></v-spacer>
           <!-- Add to cart -->
-          <v-btn depressed small color="amber darken-2 ma-2" @click="goToDetails(item.id)">Ir al curso</v-btn>
+          <v-btn depressed small dark color="amber darken-2 ma-2" @click="goToDetails(item.id)">Ir al curso</v-btn>
         </v-card-actions>
       </v-card>
     </v-col>

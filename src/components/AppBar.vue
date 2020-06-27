@@ -3,7 +3,7 @@
     <v-app-bar color="blue-grey darken-3" dense dark flat>
       <!-- Brand name, redirects to home -->
       <router-link to="/home" class="text-decoration-none white--text">
-        <v-toolbar-title>LiveCoding</v-toolbar-title>
+        <v-toolbar-title class="font-weight-medium">LiveCoding</v-toolbar-title>
       </router-link>
       <v-spacer></v-spacer>
       <!-- Menu on large devices -->
