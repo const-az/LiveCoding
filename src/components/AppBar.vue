@@ -1,23 +1,20 @@
 <template>
   <div>
-    <v-app-bar
-      color="deep-purple accent-4"
-      dense
-      dark
-      flat
-    >
+    <v-app-bar color="blue-grey darken-3" dense dark flat>
+      <!-- Brand name, redirects to home -->
       <router-link to="/home" class="text-decoration-none white--text">
         <v-toolbar-title>LiveCoding</v-toolbar-title>
       </router-link>
-
       <v-spacer></v-spacer>
-
+      <!-- Menu on large devices -->
       <div class="d-none d-md-block">
+        <!-- If it's not logged in -->
         <div v-if="!isLoggedIn">
           <v-btn small text to="/login">
             Iniciar sesión
           </v-btn>
         </div>
+        <!-- If it's logged in -->
         <div v-else>
           <v-btn small text to="/editarcursos">
             Agregar cursos
@@ -27,8 +24,7 @@
           </v-btn>
         </div>
       </div>
-
-      <!-- Dropdown menu -->
+      <!-- Menu on small devices -->
       <v-menu rounded> 
         <!-- Button activator  -->
         <template v-slot:activator="{ attrs, on }">
@@ -38,7 +34,7 @@
         </template>
         <!-- Dropdown list items -->
         <v-list flat elevation="0">
-          <!-- Only if isnt logged in -->
+          <!-- Only if it's not logged in -->
           <div v-if="!isLoggedIn">
             <!-- Log in -->
             <v-list-item link to="/login">
@@ -47,7 +43,7 @@
               </v-list-item-title>
             </v-list-item>
           </div>
-          <!-- Only if is logged in -->
+          <!-- Only if it's logged in -->
           <div v-else>
             <!-- Add products -->
             <v-list-item link to="/editarcursos">
@@ -74,6 +70,7 @@ import { mapState } from 'vuex'
 
 export default {
   methods: {
+    // Logout from Firebase / resets current user to undefined
     logout(){
       Firebase.auth().signOut().then( () => {
         this.$store.dispatch('updateUser', undefined)
@@ -83,12 +80,10 @@ export default {
   },
   computed: {
     ...mapState(['currentUser']),
+    // Gets user from state
     isLoggedIn(){
       return this.$store.getters.isLoggedIn
     },
-    getCurrentUser(){
-      return Firebase.auth().currentUser ? Firebase.auth().currentUser : ''
-    }
   }
 }
 </script>
