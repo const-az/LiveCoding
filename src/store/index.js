@@ -144,6 +144,10 @@ export default new Vuex.Store({
       commit('FALSE_EDIT')
       commit('RESET_CURRENT_COURSE')
     },
+    // Resets form when not sent
+    resetForm({commit}){
+      commit('RESET_CURRENT_COURSE')
+    },
     // Go to course details
     goToCourse({commit, getters}, id){
       commit('SHOW_LOADING')
