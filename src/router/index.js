@@ -9,6 +9,7 @@ Vue.use(VueRouter)
   {
     path: '/',
     name: 'Home',
+    alias: '/home',
     component: Home
   },
   {
