@@ -1,7 +1,7 @@
 <template>
   <v-main>
     <edit-form></edit-form>
-    <v-divider></v-divider>
+    <v-divider class="my-5"></v-divider>
     <courses-list></courses-list>
     <!-- Loading -->
     <v-overlay :value="loading" opacity="0.3">

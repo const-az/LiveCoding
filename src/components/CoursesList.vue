@@ -4,10 +4,10 @@
     <!-- Creates a card for every course -->
     <v-card flat v-for="course in courses" :key="course.id">
       <v-card-text>
-        <v-row align="center" class="text-center">
+        <v-row align="center" class="text-center grey--text text--darken-4">
           <!-- Course name -->
           <v-col cols="12" md="2">
-            {{course.data.name}}
+            <span class="text-body-1 font-weight-medium">{{course.data.name}}</span>
           </v-col>
           <!-- Course picture -->
           <v-col cols="12" md="3">
@@ -20,12 +20,12 @@
           <!-- Course actions -->
           <v-col cols="12" md="2">
             <!-- Edit course -->
-            <v-btn class="mx-2" color="amber darken-2" text small @click="editCourse(course.id)">
+            <v-btn class="ma-2" color="amber darken-2" text small @click="editCourse(course.id)">
               <span class="d-md-none mr-1">Editar</span>
               <v-icon>mdi-pencil</v-icon>
             </v-btn>
             <!-- Delete course -->
-            <v-btn class="mx-2" color="amber darken-2" text small @click="deleteConfirmation(course.id)">
+            <v-btn class="ma-2" color="amber darken-2" text small @click="deleteConfirmation(course.id)">
               <span class="d-md-none mr-1">Borrar</span>
               <v-icon>mdi-delete</v-icon>
             </v-btn>
