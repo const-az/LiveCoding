@@ -1,7 +1,7 @@
 <template>
   <v-main>
     <!-- Alert on errors and success -->
-    <v-snackbar elevation="0" top color="pink lighten-2" v-model="alert.state" timeout="3000">
+    <v-snackbar elevation="0" top color="blue-grey darken-1" v-model="alert.state" timeout="3000">
       {{ alert.text }}
       <template v-slot:action="{ attrs }">
         <!-- To close alert -->
@@ -13,18 +13,18 @@
     <!-- Login card -->
     <v-card flat width="400" class="text-center mx-auto mt-16 pa-5">
       <v-card-text>
-        <p class="text-h4 text-md-h2 mb-2 font-weight-medium cyan--text text--lighten-3">¡Bienvenido!</p>
+        <p class="text-h4 text-md-h2 mb-2 font-weight-medium amber--text text--darken-2">¡Bienvenido!</p>
       </v-card-text>
       <!-- Log-in form -->
       <v-card-text>
         <v-form>
-          <v-text-field data-testId="credentials-user" color="cyan lighten-2" label="Usuario" prepend-icon="mdi-account" v-model="credentials.email"/>
-          <v-text-field data-testId="credentials-password" color="cyan lighten-2" :type="showPassword ? 'text' : 'password'" label="Contraseña" prepend-icon="mdi-lock" :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'" @click:append="showPassword = !showPassword" v-model="credentials.password"/>
+          <v-text-field color="blue-grey darken-3" label="Usuario" prepend-icon="mdi-account" v-model="credentials.email"/>
+          <v-text-field color="blue-grey darken-3" :type="showPassword ? 'text' : 'password'" label="Contraseña" prepend-icon="mdi-lock" :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'" @click:append="showPassword = !showPassword" v-model="credentials.password"/>
         </v-form>
       </v-card-text>
       <!-- Send form -->
       <v-card-actions>
-        <v-btn data-testId="send-login" depressed rounded outlined small dark class="mx-auto mt-5" color="pink lighten-2" @click="login">Iniciar sesión</v-btn>
+        <v-btn depressed small dark class="mx-auto mt-5" color="amber darken-2" @click="login">Iniciar sesión</v-btn>
       </v-card-actions>
     </v-card>
   </v-main>
