@@ -17,7 +17,7 @@
         <v-card-actions>
           <v-spacer></v-spacer>
           <!-- Add to cart -->
-          <v-btn depressed small dark color="amber darken-2 ma-2" @click="goToDetails(item.id)">Ir al curso</v-btn>
+          <v-btn depressed small dark color="amber darken-2 ma-2" :to="{ name: 'SingleCourse', params: {name: item.link}}">Ir al curso</v-btn>
         </v-card-actions>
       </v-card>
     </v-col>

@@ -2,14 +2,14 @@
   <div>
     <v-app-bar color="blue-grey darken-3" dense dark flat>
       <!-- Brand name, redirects to home -->
-      <router-link to="/home" class="text-decoration-none white--text">
+      <router-link to="/" class="text-decoration-none white--text">
         <v-toolbar-title class="font-weight-medium">LiveCoding</v-toolbar-title>
       </router-link>
       <v-spacer></v-spacer>
       <!-- Menu on large devices -->
       <div class="d-none d-md-block">
         <!-- If it's not logged in -->
-        <div v-if="!isLoggedIn">
+        <div v-if="!currentUser">
           <v-btn small text to="/login">
             Iniciar sesión
           </v-btn>
@@ -35,7 +35,7 @@
         <!-- Dropdown list items -->
         <v-list flat elevation="0">
           <!-- Only if it's not logged in -->
-          <div v-if="!isLoggedIn">
+          <div v-if="!currentUser">
             <!-- Log in -->
             <v-list-item link to="/login">
               <v-list-item-title>
@@ -73,7 +73,7 @@ export default {
     // Logout from Firebase / resets current user to undefined
     logout(){
       Firebase.auth().signOut().then( () => {
-        this.$store.dispatch('updateUser', undefined)
+        this.$store.dispatch('updateUser', false)
         this.$router.push('/home')
       })
     }

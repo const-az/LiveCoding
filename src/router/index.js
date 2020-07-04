@@ -13,7 +13,7 @@ Vue.use(VueRouter)
     component: Home
   },
   {
-    path: '/course',
+    path: '/course/:name',
     name: 'SingleCourse',
     component: () => import(/* webpackChunkName: "singlecourse" */ '../views/SingleCourse.vue')
   },

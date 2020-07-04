@@ -3,17 +3,18 @@ import Vuex from 'vuex'
 import axios from 'axios'
 
 Vue.use(Vuex)
+
 // User functions
 // Saves user on storage
-function setInStorage(key, obj) {
+function setInStorage(key, obj){
   localStorage.setItem(key, JSON.stringify(obj))
 }
 // Gets user from storage
-function getFromStorage(key) {
-  return localStorage.getItem(key)
+function getFromStorage(key){
+  return JSON.parse(localStorage.getItem(key))
 }
 
-// Current Course funtions
+// Current Course functions
 // Empty course function to reset currentCourse
 function defaultCourse(){
   return {
@@ -39,8 +40,8 @@ export default new Vuex.Store({
     messageModal: false,
     // User info
     currentUser: getFromStorage('user') || undefined,
-    // Saves temporarily new doll data or when editing one
-    currentCourse: defaultCourse(),
+    // Current course info
+    currentCourse: defaultCourse()
   },
   mutations: {
     // Toggles loading state
@@ -54,7 +55,14 @@ export default new Vuex.Store({
     HIDE_MESSAGE_FORM(state){ state.messageModal = false },
     // Sets courses into an state array
     GET_COURSES(state, courses){
-      state.courses = courses
+      state.courses = []
+      courses.forEach(course => {
+        course.link = course.data.name
+          .toLowerCase()
+          .replace(/[^a-zA-Z0-9 -]/,"")
+          .replace(/\s/g, "-");
+        state.courses.push(course)
+      })
     },
     // Sets current course info into state
     SET_CURRENT_COURSE(state, course){ state.currentCourse = course },
@@ -67,7 +75,7 @@ export default new Vuex.Store({
         state.currentCourse.data[key] = empty.data[key]
       });
     },
-    // Save user information
+    // Saves user information
     UPDATE_USER(state, user){
       state.currentUser = user
       setInStorage('user', user)
@@ -148,12 +156,6 @@ export default new Vuex.Store({
     resetForm({commit}){
       commit('RESET_CURRENT_COURSE')
     },
-    // Go to course details
-    goToCourse({commit, getters}, id){
-      commit('SHOW_LOADING')
-      let targetCourse = getters.searchCourseById(id)
-      commit('SET_CURRENT_COURSE', targetCourse)
-    },
     // Save user
     updateUser({commit}, user){ 
       return new Promise((resolve, reject) => {
@@ -171,8 +173,5 @@ export default new Vuex.Store({
   getters: {
     isLoggedIn: state => !!state.currentUser,
     currentUser: state => state.currentUser,
-    searchCourseById: (state) => (id) => {
-      return state.courses.find(course => course.id === id)
-    },
   }
 })
