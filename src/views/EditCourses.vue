@@ -1,5 +1,5 @@
 <template>
-  <v-main>
+  <v-main class="mt-15">
     <edit-form></edit-form>
     <v-divider class="my-5"></v-divider>
     <courses-list></courses-list>

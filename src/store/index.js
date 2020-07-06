@@ -118,8 +118,13 @@ export default new Vuex.Store({
         })
       }
     },
+    // Smooth scrolling when edit button is clicked
+    scrollToTop() {
+      window.scrollTo({top: 0, behavior: 'smooth'})
+    },
     // Gets info about selected doll for editing
-    editCourse({commit}, id){
+    editCourse({commit,dispatch}, id){
+      dispatch('scrollToTop')
       // When has to get it from Firebase
       commit('SHOW_LOADING')
       axios.get(`${baseURL}/course/${id}`, { headers:{'Context-type': 'application/json'} })

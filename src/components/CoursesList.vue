@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container class="mb-16">
     <p class="text-center mt-5 text-h6">Cursos registrados</p>
     <!-- Creates a card for every course -->
     <v-card flat v-for="course in courses" :key="course.id">
@@ -20,12 +20,12 @@
           <!-- Course actions -->
           <v-col cols="12" md="2">
             <!-- Edit course -->
-            <v-btn class="ma-2" color="amber darken-2" text small @click="editCourse(course.id)">
+            <v-btn class="ma-2" color="blue-grey darken-1" text small @click="editCourse(course.id)">
               <span class="d-md-none mr-1">Editar</span>
               <v-icon>mdi-pencil</v-icon>
             </v-btn>
             <!-- Delete course -->
-            <v-btn class="ma-2" color="amber darken-2" text small @click="deleteConfirmation(course.id)">
+            <v-btn class="ma-2" color="blue-grey darken-1" text small @click="deleteConfirmation(course.id)">
               <span class="d-md-none mr-1">Borrar</span>
               <v-icon>mdi-delete</v-icon>
             </v-btn>

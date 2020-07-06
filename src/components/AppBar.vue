@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-app-bar color="blue-grey darken-3" dense dark flat>
+    <v-app-bar :class="colorCheck ? 'transparent' : 'blue-grey darken-4'" absolute dense dark flat>
       <!-- Brand name, redirects to home -->
       <router-link to="/" class="text-decoration-none white--text">
         <v-toolbar-title class="font-weight-medium">LiveCoding</v-toolbar-title>
@@ -10,16 +10,16 @@
       <div class="d-none d-md-block">
         <!-- If it's not logged in -->
         <div v-if="!currentUser">
-          <v-btn small text to="/login">
+          <v-btn rounded small text to="/login">
             Iniciar sesión
           </v-btn>
         </div>
         <!-- If it's logged in -->
         <div v-else>
-          <v-btn small text to="/editarcursos">
+          <v-btn rounded small text to="/editarcursos">
             Agregar cursos
           </v-btn>
-          <v-btn small text @click="logout">
+          <v-btn rounded small text @click="logout">
             Cerrar sesión
           </v-btn>
         </div>
@@ -69,6 +69,9 @@ import Firebase from 'firebase'
 import { mapState } from 'vuex'
 
 export default {
+  data: () => ({
+    colorCheck: true
+  }),
   methods: {
     // Logout from Firebase / resets current user to undefined
     logout(){
@@ -76,6 +79,13 @@ export default {
         this.$store.dispatch('updateUser', false)
         this.$router.push('/home')
       })
+    },
+    barColor(){
+      if(window.location.pathname != '/home' || window.location.pathname != '/'){
+        return 'blue-grey darken-4'
+      }else{
+        return 'transparent'
+      }
     }
   },
   computed: {
@@ -84,6 +94,15 @@ export default {
     isLoggedIn(){
       return this.$store.getters.isLoggedIn
     },
+  },
+  watch: {
+    '$route' (){
+      if(this.$route.path == '/' || this.$route.path == '/home'){
+        this.colorCheck = true
+      } else{
+        this.colorCheck = false
+      }
+    }
   }
 }
 </script>

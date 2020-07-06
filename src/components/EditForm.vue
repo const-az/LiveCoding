@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <v-card flat>
+    <v-card flat max-width="70vw" class="mx-auto">
       <p class="text-center text-h5 mt-6">{{ currentCourse.id==null ? 'Agregar curso' : 'Editar curso'}}</p>
       <v-card-text class="text--primary pa-5">
         <v-row>
@@ -27,8 +27,8 @@
       </v-card-text>
       <v-card-actions>
         <v-spacer></v-spacer>
-        <v-btn depressed outlined dark color="amber darken-2" @click="resetForm" v-if="!currentCourse.id">Borrar</v-btn>
-        <v-btn depressed dark color="amber darken-2" @click="postCourse">{{ !!currentCourse.id ? 'Actualizar' : 'Crear'}}</v-btn>
+        <v-btn outlined rounded dark color="blue-grey darken-1" @click="resetForm" v-if="!currentCourse.id">Borrar</v-btn>
+        <v-btn depressed dark rounded color="blue-grey darken-1" @click="postCourse">{{ !!currentCourse.id ? 'Actualizar' : 'Crear'}}</v-btn>
       </v-card-actions>
     </v-card>
   </v-container>
