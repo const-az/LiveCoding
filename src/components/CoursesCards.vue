@@ -38,13 +38,6 @@ import { mapState, mapActions } from 'vuex'
 
 export default {
   computed: mapState(['courses','loading']),
-  methods: {
-    ...mapActions(['goToCourse']),
-    goToDetails(id){
-      this.$router.push('/course')
-      this.goToCourse(id)
-    }
-  },
   created(){
     this.$store.dispatch('getCourses')
   }
