@@ -4,21 +4,14 @@
       <p class="mt-5 mb-0 text-h6 text-center">Detalles del curso</p>
       <p class="text-h3 text-center">{{currentCourse.data.name}}</p>
       <v-row class="mt-8">
-        <!-- COURSE EXAMPLES-->
-        <!-- Creates cards for every example -->
         <v-col cols="12" sm="6" md="4" v-for="example in currentCourse.examples" :key="example.id">
-          <!-- Card -->
           <v-card outlined class="rounded-xl">
             <v-card-text class="pb-0">
-              <!-- Course name -->
               <p class="pa-0 text-h5 font-weight-bold">{{example.data.title}}</p>
-              <!-- Course description -->
               <p class="text--primary text-caption">{{example.data.description}}</p>
             </v-card-text>
-            <!-- Action buttons -->
             <v-card-actions>
               <v-spacer></v-spacer>
-              <!-- Listen to sample -->
               <audio controls>
                 <source :src="example.data.mp3" type="audio/mpeg">
               Your browser does not support the audio element.

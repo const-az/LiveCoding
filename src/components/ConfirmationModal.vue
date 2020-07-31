@@ -1,12 +1,9 @@
 <template>
-  <!-- Delete confirmation modal -->
   <v-dialog overlay-opacity="0.5" :value="messageModal" max-width="500px" persistent>
     <v-card outlined class="pa-4">
-      <!-- Modal title -->
       <v-card-text>
         <v-card-title class="text-subtitle-1">{{ !edit ? `¿Seguro que deseas borrar este curso?` : 'Curso borrado exitosamente.'}}</v-card-title>
       </v-card-text>
-      <!-- Modal buttons: to confirm or close modal -->
       <v-card-actions>
         <v-spacer></v-spacer>
         <v-btn color="amber darken-2" outlined small @click="closeMessage">{{ !edit ? 'No' : 'Cerrar'}}</v-btn>
